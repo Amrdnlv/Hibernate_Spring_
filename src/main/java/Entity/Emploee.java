@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "employees")
 public class Emploee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "name")
@@ -37,6 +38,9 @@ public class Emploee {
                 '}';
     }
 
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
