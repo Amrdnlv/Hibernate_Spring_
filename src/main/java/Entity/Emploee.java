@@ -3,11 +3,11 @@ package Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 public class Emploee {
     @Id
     @Column(name = "id")
-    private String id;
+    private int id;
     @Column(name = "name")
     private String name;
     @Column(name = "surname")
@@ -19,7 +19,7 @@ public class Emploee {
 
     public Emploee(){}
 
-    public Emploee(String name, String surname, String department, String salsry) {
+    public Emploee(String name, String surname, String department, String salary) {
         this.name = name;
         this.surname = surname;
         this.department = department;
@@ -37,11 +37,8 @@ public class Emploee {
                 '}';
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

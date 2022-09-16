@@ -1,3 +1,4 @@
+package Entity;
 
 import Entity.Emploee;
 import org.hibernate.Session;
