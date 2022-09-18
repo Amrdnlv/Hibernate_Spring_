@@ -14,12 +14,13 @@ public class test {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Emploee.class)
                 .buildSessionFactory();
+        Session session = null;
         try {
-            Session session = factory.getCurrentSession();
+           session = factory.getCurrentSession();
             Emploee emp = new Emploee("Roman", "Danilov", "ID", 50000);
             session.beginTransaction();
             session.save(emp);
-            int getid = emp.getId();
+            int getid = emp.getId(); // получение созданного работника
             Emploee employ = session.get(Emploee.class, getid);
             //создание Select по айди
             System.out.print(employ);
@@ -36,16 +37,24 @@ public class test {
 
             //Обновление записи работника, обновляем зарплату
             Emploee employeUp = session.get(Emploee.class, 4);
-            employeUp.setSalary(1500);
+            //employeUp.setSalary(1500);
 
             //Обновляем данные запролаты у сотрудников по имени Роман
-            session.createQuery("update Emploee set salary = 10000 where  name = 'Roman'").executeUpdate();
+            // session.createQuery("update Emploee set salary = 10000 where  name = 'Roman'").executeUpdate();
+
+
+            //Удаление работника
+            session.delete(employeUp); //удаление обновленного сотрудника
+            System.out.println("Delete employeee");
+
+            //Удаление по критерию
+            //session.createQuery("delete Emploee where name = 'Roman'");
 
 
 
 
-            session.getTransaction().commit();
         }finally {
+            session.getTransaction().commit();
             factory.close();
         }
 
