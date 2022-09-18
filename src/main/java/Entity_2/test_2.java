@@ -21,19 +21,28 @@ public class test_2 {
 
         try {
 
-           session = factory.getCurrentSession();
+//           session = factory.getCurrentSession();
+//           Emploee_2 employee = new Emploee_2("Roman", "Danilov",
+//                   "It", 500);
+//           Details detail = new Details("Kazan", "899993838","email@email.ru");
+//           System.out.println("done!");
+//           employee.setEmpDetail(detail); //добавляем классу
+//            //эмлои данные о классе детаил через сеттер, чтобы
+//            //класс наш класс знал
+//            session.beginTransaction();
+//            session.save(employee);
 
+            //получение деталей работника с айди
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            Emploee_2 emp_2 = session.get(Emploee_2.class,1);
+//            System.out.println(emp_2.getEmpDetail());
 
-           Emploee_2 employee = new Emploee_2("Roman", "Danilov",
-                   "It", 500);
-           Details detail = new Details("Kazan", "899993838","email@email.ru");
-           System.out.println("done!");
-           employee.setEmpDetail(detail); //добавляем классу
-            //эмлои данные о классе детаил через сеттер, чтобы
-            //класс наш класс знал
+            //каскадное удаление работника
+            session = factory.getCurrentSession();
             session.beginTransaction();
-            session.save(employee);
-
+            Emploee_2 emp_2 = session.get(Emploee_2.class,2);
+            session.delete(emp_2);
 
         }finally {
             //коммит сессии
