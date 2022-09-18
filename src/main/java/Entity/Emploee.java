@@ -16,11 +16,11 @@ public class Emploee {
     @Column(name = "department")
     private String department;
     @Column(name = "salary")
-    private String salary;
+    private Integer salary;
 
     public Emploee(){}
 
-    public Emploee(String name, String surname, String department, String salary) {
+    public Emploee(String name, String surname, String department, Integer salary) {
         this.name = name;
         this.surname = surname;
         this.department = department;
@@ -70,11 +70,11 @@ public class Emploee {
         this.department = department;
     }
 
-    public String getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 }

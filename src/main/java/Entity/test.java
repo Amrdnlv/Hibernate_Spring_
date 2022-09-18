@@ -16,7 +16,7 @@ public class test {
                 .buildSessionFactory();
         try {
             Session session = factory.getCurrentSession();
-            Emploee emp = new Emploee("Roman", "Danilov", "ID", "50000");
+            Emploee emp = new Emploee("Roman", "Danilov", "ID", 50000);
             session.beginTransaction();
             session.save(emp);
             int getid = emp.getId();
@@ -24,13 +24,19 @@ public class test {
             //создание Select по айди
             System.out.print(employ);
 
-            //HQL запрос Получение всех работников
+
+//            //HQL запрос Получение всех работников
             List <Emploee> emploees= session.createQuery("FROM Emploee").getResultList();
             for (Emploee e: emploees)
                 System.out.print(e);
+            //поиск работников с именем Roman
             List <Emploee> emploeess= session.createQuery("FROM Emploee WHERE name = 'Roman'").getResultList();
             for (Emploee e: emploeess)
                 System.out.print(e);
+
+            //Обновление записи работника, обновляем зарплату
+            Emploee employeUp = session.get(Emploee.class, 4);
+            employeUp.setSalary(1500);
 
 
 
