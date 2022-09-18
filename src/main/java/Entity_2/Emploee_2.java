@@ -3,7 +3,7 @@ package Entity_2;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employee_2")
+@Table(name = "employees_2")
 public class Emploee_2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,6 @@ public class Emploee_2 {
     private Integer salary;
     @OneToOne(cascade = CascadeType.ALL)//указываем принцип связи, и тип каскада тип удаление всех заввисимых полей
     @JoinColumn(name = "details_id") //на какой столбец ссылается,
-    // по какому полю идет соединение
     private Details empDetail;
 
     public Emploee_2(){}
@@ -40,6 +39,14 @@ public class Emploee_2 {
                 ", department='" + department + '\'' +
                 ", salary='" + salary + '\'' +
                 '}';
+    }
+
+    public Details getEmpDetail() {
+        return empDetail;
+    }
+
+    public void setEmpDetail(Details empDetail) {
+        this.empDetail = empDetail;
     }
 
     public int getId() {
