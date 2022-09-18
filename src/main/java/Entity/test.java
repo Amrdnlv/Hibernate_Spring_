@@ -25,7 +25,7 @@ public class test {
             System.out.print(employ);
 
 
-//            //HQL запрос Получение всех работников
+          //HQL запрос Получение всех работников
             List <Emploee> emploees= session.createQuery("FROM Emploee").getResultList();
             for (Emploee e: emploees)
                 System.out.print(e);
@@ -37,6 +37,10 @@ public class test {
             //Обновление записи работника, обновляем зарплату
             Emploee employeUp = session.get(Emploee.class, 4);
             employeUp.setSalary(1500);
+
+            //Обновляем данные запролаты у сотрудников по имени Роман
+            session.createQuery("update Emploee set salary = 10000 where  name = 'Roman'").executeUpdate();
+
 
 
 
