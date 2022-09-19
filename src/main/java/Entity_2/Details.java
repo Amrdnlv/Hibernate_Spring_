@@ -16,6 +16,17 @@ public class Details {
     @Column (name="email")
     private String email;
 
+    @OneToOne(mappedBy = "empDetail", cascade = CascadeType.ALL)
+    private Emploee_2 emp;
+
+    public Emploee_2 getEmp() {
+        return emp;
+    }
+
+    public void setEmp(Emploee_2 emp) {
+        this.emp = emp;
+    }
+
     public Details() {
     }
 

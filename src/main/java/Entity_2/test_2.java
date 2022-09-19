@@ -3,6 +3,7 @@ package Entity_2;
 
 import Entity_2.Emploee_2;
 import Entity_2.Details;
+import net.bytebuddy.asm.MemberSubstitution;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -38,12 +39,18 @@ public class test_2 {
 //            Emploee_2 emp_2 = session.get(Emploee_2.class,1);
 //            System.out.println(emp_2.getEmpDetail());
 
-            //каскадное удаление работника
+//            //каскадное удаление работника
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            Emploee_2 emp_2 = session.get(Emploee_2.class,2);
+//            session.delete(emp_2);
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Emploee_2 emp_2 = session.get(Emploee_2.class,2);
-            session.delete(emp_2);
-
+            Emploee_2 emp = new Emploee_2("Vasuya", "Pupkin", "HR", 500);
+            Details detail = new Details("Mascow", "806352493", "vas@mail.ru");
+            emp.setEmpDetail(detail);
+            detail.setEmp(emp);
+            session.save(detail);
         }finally {
             //коммит сессии
             session.getTransaction().commit();
